@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import {RouterModule, Routes} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
 import { AddBusComponent } from './app.addbuscomponent';
 import { ShowBusesComponent } from './app.showbusescomponent';
