@@ -39,7 +39,7 @@
             <th>Cost Per Seat</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let bus of busList;">
+        <tr *ngFor="let bus of busList | paginate : { itemsPerPage: 5, currentPage: p }">
             <td>{{bus.busId}}</td>
             <td>{{bus.busName}}</td>
             <td>{{bus.busClass}}</td>
@@ -56,6 +56,7 @@
                 <button type="button" class="btn btn-danger" (click)="openConfirmationDialog(bus.busId)" >Delete</button>
             </td>
         </tr>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </table>
 </div>
 </body>

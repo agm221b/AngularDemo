@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -31,7 +31,8 @@ const myroutes: Routes = [
         FormsModule,
         HttpClientModule,
         RouterModule.forRoot(myroutes),
-        NgbModule.forRoot()
+        NgxPaginationModule
+        
     ],
     declarations: [
         AppComponent,
