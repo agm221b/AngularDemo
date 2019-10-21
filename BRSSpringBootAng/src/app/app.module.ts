@@ -6,11 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
-<<<<<<< HEAD
 import { RouterModule, Routes } from '@angular/router';
-=======
-import {Routes, RouterModule} from '@angular/router';
->>>>>>> 685ebaa0ae1fbeee278d541ce4ea8aa1a1d4b746
 
 import { AddBusComponent } from './app.addbuscomponent';
 import { ShowBusesComponent } from './app.showbusescomponent';
