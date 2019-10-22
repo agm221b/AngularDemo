@@ -13,7 +13,7 @@ export class BusService{
     constructor(private myhttp:HttpClient){}
 
     getAllBuses(){
-        return this.myhttp.get('http://localhost:9081/brs/showbuses');
+        return this.myhttp.get('http://localhost:9085/brs/showbuses');
     }
     
     addBus(data:any){
@@ -31,12 +31,13 @@ export class BusService{
         form.append("endTime", data.endTime);
         form.append("costPerSeat", data.costPerSeat);
         form.append("noOfSeats", data.noOfSeats);
-        return this.myhttp.post('http://localhost:9081/brs/addbusdetails', form);
+        console.log(form);
+        return this.myhttp.post('http://localhost:9085/brs/addbusdetails', form);
 
     }
 
     deleteBus(id:number){ 
-        return this.myhttp.delete("http://localhost:9081/brs/deletebus?busId="+id);
+        return this.myhttp.get("http://localhost:9085/brs/deletebus?busId="+id);
     }
 
 }

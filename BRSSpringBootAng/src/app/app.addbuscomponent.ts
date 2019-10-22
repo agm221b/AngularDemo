@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BusService} from './_service/app.busservice';
+import {ShowBusesComponent} from './app.showbusescomponent';
+import { BusService } from './_service/app.busservice';
 
 @Component({
     selector: 'addbus',
@@ -8,13 +9,17 @@ import { BusService} from './_service/app.busservice';
 })
 
 export class AddBusComponent {
-    model:any={};
+    model: any = {};
+    showBus : ShowBusesComponent;
+    constructor(private service: BusService, private router: Router) { }
 
-    constructor(private service: BusService, private router : Router){}
-
-    addBus():any{
+    addBus(): any { 
         this.service.addBus(this.model)
-        .subscribe((data)=>console.log(data));
-        this.router.navigate(['/showbuses']);
+            .subscribe((data) => console.log(data));
+             
+            this.router.navigate(['/showbuses']);
+            this.showBus.ngOnInit();
     }
+
+    
 }

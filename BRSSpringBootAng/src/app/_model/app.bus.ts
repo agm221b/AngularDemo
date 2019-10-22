@@ -10,4 +10,4 @@ export class Bus{
     noOfSeats: number;
     costPerSeat: number;
     deleteFlag: number;
-}
+}   

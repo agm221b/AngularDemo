@@ -1,29 +1,98 @@
 <style type="text/css">
-    #busform{
-    background-color:white;
-    height: 90%;
+    #addbutton {
+        text-align: center;
     }
-    
-    #addbtn{
-    text-align:center;
+
+    h3 {
+        text-align: center;
     }
-    
-    h3{
-    text-align:center;
-    }
-    body{
+
+    body {
         background-color: #fff9c4;
+        height: 800px;
+        background-image: url('../assets/img/busbgimg.jpg'); 
     }
-    </style>
-    <h2>Adding Buses</h2>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="adminhome">BusNama</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="adminhome">Home</a></li>
-            </ul>
-            
-        </div>
-    </nav>
+</style>
+<body>
+<!-- <h2>Adding Buses</h2> -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+                        <a class="navbar-brand" href="adminhome">BusNama</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="adminhome">Home</a></li>
+                    </ul>
+    </div>
+</nav>
+<div class="container"
+    style="text-align: center; ">
+    <table style="color: maroon; border-collapse: separate; " class="table table-hover">
+        <tr>
+            <td><b>Bus Name</b></td>
+            <td><input type="text" [(ngModel)]="model.busName" id="busName" type="text" class="validate"
+                    required="required" pattern="^[A-Za-z\s]+$" title="Bus name should contain
+                alphabetical characters" /></td>
+        </tr>
+
+        <tr>
+            <td><b>Bus Type</b></td>
+            <td><select class="browser-default" [(ngModel)]="model.busType" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="SLEEPER">SLEEPER</option>
+                    <option value="SEMI_SLEEPER">SEMI-SLEEPER</option>
+                </select>
+
+        </tr>
+
+        <tr>
+            <td><b>Bus Class</b></td>
+            <td><input type="radio" value="AC" [(ngModel)]="model.busClass" checked /> AC</td>
+            <td><input type="radio" value="NON_AC" [(ngModel)]="model.busClass" /> Non-AC</td>
+
+        </tr>
+
+        <tr>
+            <td><b>Source</b></td>
+            <td><input type="text" [(ngModel)]="model.source" /></td>
+
+        </tr>
+
+        <tr>
+            <td><b>Destination</b></td>
+            <td><input type="text" [(ngModel)]="model.destination" /></td>
+
+        </tr>
+
+        <tr>
+            <td><b>Start Time</b></td>
+            <td><input type="time" [(ngModel)]="model.startTime" /></td>
+
+        </tr>
+
+        <tr>
+            <td><b>End Time</b></td>
+            <td><input type="time" [(ngModel)]="model.endTime" /></td>
+
+        </tr>
+
+        <tr>
+            <td><b>No of Seats</b></td>
+            <td><input type="text" [(ngModel)]="model.noOfSeats" required /></td>
+
+        </tr>
+
+        <tr>
+            <td><b>Cost Per Seat</b></td>
+            <td><input type="text" [(ngModel)]="model.costPerSeat" required /></td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <button class="btn btn-success" id="addbutton" type="button" value="Add Bus" (click)="addBus()" >Add Bus</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
