@@ -1,6 +1,6 @@
 export class Bus{
     busId: number;
-    busName: number;
+    busName: string;
     busClass: String;
     busType: string;
     source: string;

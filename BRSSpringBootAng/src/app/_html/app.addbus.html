@@ -15,23 +15,14 @@
 </style>
 <body>
 <!-- <h2>Adding Buses</h2> -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-                        <a class="navbar-brand" href="adminhome">BusNama</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="adminhome">Home</a></li>
-                    </ul>
-    </div>
-</nav>
+
 <div class="container"
     style="text-align: center; ">
     <table style="color: maroon; border-collapse: separate; " class="table table-hover">
         <tr>
             <td><b>Bus Name</b></td>
-            <td><input type="text" [(ngModel)]="model.busName" id="busName" type="text" class="validate"
-                    required="required" pattern="^[A-Za-z\s]+$" title="Bus name should contain
+            <td><input  [(ngModel)]="model.busName" id="busName" type="text" class="validate"
+                      title="Bus name should contain
                 alphabetical characters" /></td>
         </tr>
 
@@ -90,7 +81,7 @@
 
         <tr>
             <td>
-                <button class="btn btn-success" id="addbutton" type="button" value="Add Bus" (click)="addBus()" >Add Bus</button>
+                <input type="button" class="btn btn-success" id="addbutton" [disabled]="validate()" type="button" value="Add Bus" (click)="addBus()" />
             </td>
         </tr>
     </table>

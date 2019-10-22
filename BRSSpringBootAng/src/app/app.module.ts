@@ -7,13 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { RouterModule, Routes } from '@angular/router';
-
+import {ErrorComponent} from './app.errorcomponent';
 import { AddBusComponent } from './app.addbuscomponent';
 import { ShowBusesComponent } from './app.showbusescomponent';
 import { AdminHomeComponent } from './app.adminhomecomponent';
+import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
-import { ConfirmationDialogService } from './confirmation-dialog/app.confirmationservice';
-import { ConfirmationDialogComponent } from './confirmation-dialog/app.confirmationcomponent';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalBackdrop } from '@ng-bootstrap/ng-bootstrap/modal/modal-backdrop';
 //{path: 'show/:text', component: ShowComponent},
@@ -22,6 +21,7 @@ const myroutes: Routes = [
     { path: 'adminhome', component: AdminHomeComponent },
     { path: 'addbus', component: AddBusComponent },
     { path: 'showbuses', component: ShowBusesComponent },
+    { path: '**', component: ErrorComponent }
 
 ];
 
@@ -31,7 +31,8 @@ const myroutes: Routes = [
         FormsModule,
         HttpClientModule,
         RouterModule.forRoot(myroutes),
-        NgxPaginationModule
+        NgxPaginationModule,
+        ConfirmationPopoverModule.forRoot({confirmButtonType:'danger'})
         
     ],
     declarations: [
@@ -39,10 +40,10 @@ const myroutes: Routes = [
         AddBusComponent,
         ShowBusesComponent,
         AdminHomeComponent,
-        ConfirmationDialogComponent
+        ErrorComponent
     ],
-    providers: [ConfirmationDialogService],
-    entryComponents: [ConfirmationDialogComponent],
+    providers: [],
+    entryComponents: [],
     bootstrap: [AppComponent]
 })
 

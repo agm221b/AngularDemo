@@ -37,7 +37,7 @@ export class BusService{
     }
 
     deleteBus(id:number){ 
-        return this.myhttp.get("http://localhost:9085/brs/deletebus?busId="+id);
+        return this.myhttp.put("http://localhost:9085/brs/deletebus?busId="+id,null);
     }
 
 }
