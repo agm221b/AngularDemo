@@ -2,19 +2,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 
 
 import { RouterModule, Routes } from '@angular/router';
-import {ErrorComponent} from './app.errorcomponent';
+import { ErrorComponent } from './app.errorcomponent';
 import { AddBusComponent } from './app.addbuscomponent';
 import { ShowBusesComponent } from './app.showbusescomponent';
 import { AdminHomeComponent } from './app.adminhomecomponent';
-import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './app.httperrorinterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { NgbModalBackdrop } from '@ng-bootstrap/ng-bootstrap/modal/modal-backdrop';
+import { ToastrModule } from 'ngx-toastr';
+
+
+
 //{path: 'show/:text', component: ShowComponent},
 const myroutes: Routes = [
     { path: '', redirectTo: 'adminhome', pathMatch: 'full' },
@@ -31,9 +36,11 @@ const myroutes: Routes = [
         FormsModule,
         HttpClientModule,
         RouterModule.forRoot(myroutes),
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
         NgxPaginationModule,
-        ConfirmationPopoverModule.forRoot({confirmButtonType:'danger'})
-        
+        ConfirmationPopoverModule.forRoot({ confirmButtonType: 'danger' })
+
     ],
     declarations: [
         AppComponent,
@@ -42,7 +49,11 @@ const myroutes: Routes = [
         AdminHomeComponent,
         ErrorComponent
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpErrorInterceptor,
+        multi: true
+    }],
     entryComponents: [],
     bootstrap: [AppComponent]
 })

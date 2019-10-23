@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {ShowBusesComponent} from './app.showbusescomponent';
 import { BusService } from './_service/app.busservice';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'addbus',
@@ -24,12 +25,13 @@ export class AddBusComponent implements OnInit{
     seatStatus: boolean = false;
     costStatus: boolean = false;
     showBus : ShowBusesComponent;
-    constructor(private service: BusService, private router: Router) { }
+    constructor(private service: BusService, private router: Router, private toastr: ToastrService) { }
 
     addBus(): any { 
         this.service.addBus(this.model)
             .subscribe((data) => console.log(data));
-            alert("Bus Added"); 
+            //alert("Bus Added"); 
+            this.toastr.success('Bus Added Successfully!', 'Congratulations!');
             this.router.navigate(['/showbuses']);
             this.showBus.ngOnInit();
     }
