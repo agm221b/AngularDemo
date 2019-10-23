@@ -1,3 +1,8 @@
+/* author Tejaswini
+description contains the service methods of booking
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 import { Injectable} from '@angular/core'
 import { HttpClient} from '@angular/common/http'
 import { Booking } from '../_model/app.booking';

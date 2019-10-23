@@ -1,3 +1,8 @@
+/* author Tejaswini
+description : add booking component
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 import { Component, OnInit} from '@angular/core'
 import { BusService } from './_service/app.busservice';
 import { Router, ActivatedRoute } from '@angular/router';

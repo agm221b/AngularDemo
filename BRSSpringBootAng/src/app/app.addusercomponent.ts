@@ -1,3 +1,8 @@
+/* author Mayank
+description : add user component
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {UserService} from './_service/app.userservice';

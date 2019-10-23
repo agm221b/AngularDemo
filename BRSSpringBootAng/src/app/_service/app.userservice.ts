@@ -1,3 +1,8 @@
+/* author Mayank
+description contains the service methods of user
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 import { Injectable} from '@angular/core'
 import { HttpClient} from '@angular/common/http'
 
