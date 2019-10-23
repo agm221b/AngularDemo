@@ -42,7 +42,8 @@ import { HomeComponent } from './app.homecomponent';
 //{path: 'show/:text', component: ShowComponent},
 const myroutes: Routes = [
     
-    
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
     { path: 'adminhome', component: AdminHomeComponent },
     { path: 'addbus', component: AddBusComponent },
     { path: 'showbuses', component: ShowBusesComponent },
