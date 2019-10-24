@@ -1,19 +1,45 @@
+
+
+<nav class="nav nav-pills nav-fill navbar-dark bg-dark" style="height: 50px; width: 1300px;">
+        <a class="nav-item nav-link" href="/adminhome"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Admin
+            Home</a>
+        <a class="nav-item nav-link" href="/addbus"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Add
+            Bus</a>
+        <a class="nav-item nav-link" href="/showbuses"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Show
+            Buses</a>
+        <a class="nav-item nav-link" href="/showusers"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Show
+            Users</a>
+        <a class="nav-item nav-link" href="/home"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Logout</a>
+</nav>
 <h1>
     List of users
 </h1>
-<table border="1">
+<table border="1" style="font-size: 25px;">
     <tr>
         <th>User Id</th>
         <th>User Name</th>
         <th>User Type</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th>Actions</th>
     </tr>
-    <tr *ngFor="let user of users;">
+    <tr *ngFor="let user of users | paginate : {itemsPerPage:10, currentPage:p }">
         <td>{{user.userId}}</td>
         <td>{{user.username}}</td>
         <td>{{user.userType}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phoneNumber}}</td>
+        <td>
+            <input type="button" id="addbtn" class="btn btn-default" mwlConfirmationPopover
+            [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage+''+user.username"
+            placement="center" (confirm)="removeUser(user.userId)" (cancel)="cancelClicked= true"
+            value="Delete">
+        </td>
     </tr>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </table>
