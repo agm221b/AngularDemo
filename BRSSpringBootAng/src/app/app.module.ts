@@ -41,6 +41,7 @@ import { LogoutComponent } from './app.logoutcomponent';
 import { AuthGuardService } from './_service/app.authguardservice';
 
 
+
 //{path: 'show/:text', component: ShowComponent},
 const myroutes: Routes = [
     
@@ -49,9 +50,10 @@ const myroutes: Routes = [
     { path: 'adminhome', component: AdminHomeComponent,canActivate:[AuthGuardService]},
     { path: 'addbus', component: AddBusComponent,canActivate:[AuthGuardService]},
     { path: 'showbuses', component: ShowBusesComponent,canActivate:[AuthGuardService]},
-    //{ path: '**', component: ErrorComponent },
-    {path:'login',component:LoginComponent},
-    {path:'logout',component:LogoutComponent,canActivate:[AuthGuardService]},
+    
+    
+    {path: 'login',component:LoginComponent},
+    {path: 'logout',component:LogoutComponent,canActivate:[AuthGuardService]},
     { path: 'register', component: AddUserComponent },
     {path:'addbooking',component: AddBookingComponent,canActivate:[AuthGuardService]},
     {path:'viewbookings',component: ViewBookingsComponent,canActivate:[AuthGuardService]},
@@ -60,7 +62,8 @@ const myroutes: Routes = [
     {path:'searchrunningbuses/:src/:dest/:journeydate',component: ShowRunningBusesComponent,canActivate:[AuthGuardService]},
     {path:'addpassenger/:busTransactionId',component:AddPassengerComponent,canActivate:[AuthGuardService]},
     { path: 'adduser', component: AddUserComponent },
-    { path: 'showusers', component: ViewAllUsersComponent }
+    { path: 'showusers', component: ViewAllUsersComponent },
+    { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
