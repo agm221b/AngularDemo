@@ -1,88 +1,138 @@
-<style type="text/css">
-    #addbutton {
-        text-align: center;
-    }
+<head>
 
-    h3 {
-        text-align: center;
-    }
+    <style type="text/css">
+        #addbutton {
+            text-align: center;
+        }
 
-    body {
-        background-color: #fff9c4;
-        height: 800px;
-        background-image: url('../assets/img/busbgimg.jpg'); 
-    }
-</style>
+        h3 {
+            text-align: center;
+        }
+
+        body {
+            background-color: #fff9c4;
+            height: 750px;
+            width: 1300px;
+            background-image: url('../assets/img/busbg7.jpg');
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
 <body>
-<!-- <h2>Adding Buses</h2> -->
+        
+    <!-- <h2>Adding Buses</h2> -->
+    <div class="container" style="padding: 40px;">
+        <div class="form-group"
+            style=" width: 1000px; opacity: 0.97; text-align: center; background-color: khaki; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger;">
+            <table style="color: maroon; border-collapse: separate; " class="table table-hover">
+                <tr>
+                    <td><b>Bus Name</b></td>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <td><input class="form-control" [(ngModel)]="model.busName" id="busName" type="text"
+                                    title="Bus name should contain alphabetical characters. Min 4 letters" /></td>
+                        </div>
+                    </div>
+                </tr>
 
-<div class="container"
-    style="text-align: center; ">
-    <table style="color: maroon; border-collapse: separate; " class="table table-hover">
-        <tr>
-            <td><b>Bus Name</b></td>
-            <td><input  [(ngModel)]="model.busName" id="busName" type="text" class="validate"
-                      title="Bus name should contain alphabetical characters. Min 4 letters" /></td>
-        </tr>
+                <tr>
+                    <td><b>Bus Type</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><select class="form-control" style="height: 40px;" [(ngModel)]="model.busType" required>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="SLEEPER">SLEEPER</option>
+                            <option value="SEMI_SLEEPER">SEMI-SLEEPER</option>
+                        </select></td></div></div>
 
-        <tr>
-            <td><b>Bus Type</b></td>
-            <td><select class="browser-default" [(ngModel)]="model.busType" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="SLEEPER">SLEEPER</option>
-                    <option value="SEMI_SLEEPER">SEMI-SLEEPER</option>
-                </select>
+                </tr>
 
-        </tr>
+                <tr>
+                    <td><b>Bus Class</b></td>
+                    
+                    <td style="text-align: left;"><input class="form-control" style="height: 15px; width: 15px; " type="radio" value="AC" [(ngModel)]="model.busClass"  /> AC
+                    </td>
+                
+                
+                    <td style="text-align: left;"><input class="form-control" style="height: 15px; width: 15px; " type="radio" value="NON_AC" [(ngModel)]="model.busClass"  />Non-AC
+                    </td>
+                
+                </tr>
 
-        <tr>
-            <td><b>Bus Class</b></td>
-            <td><input type="radio" value="AC" [(ngModel)]="model.busClass" checked /> AC</td>
-            <td><input type="radio" value="NON_AC" [(ngModel)]="model.busClass" /> Non-AC</td>
+                <tr>
+                    <td><b>Source</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input class="form-control" type="text" [(ngModel)]="model.source" /></td>
+                    </div>
+                    </div>
 
-        </tr>
+                </tr>
 
-        <tr>
-            <td><b>Source</b></td>
-            <td><input type="text" [(ngModel)]="model.source" /></td>
+                <tr>
+                    <td><b>Destination</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input class="form-control" type="text" [(ngModel)]="model.destination" /></td>
+                    </div>
+                    </div>
 
-        </tr>
 
-        <tr>
-            <td><b>Destination</b></td>
-            <td><input type="text" [(ngModel)]="model.destination" /></td>
+                </tr>
 
-        </tr>
+                <tr>
+                    <td><b>Start Time</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input class="form-control" type="time" [(ngModel)]="model.startTime" /></td>
+                    </div>
+                    </div>
 
-        <tr>
-            <td><b>Start Time</b></td>
-            <td><input type="time" [(ngModel)]="model.startTime" /></td>
+                </tr>
 
-        </tr>
+                <tr>
+                    <td><b>End Time</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input type="time" class="form-control" [(ngModel)]="model.endTime" /></td>
+                    </div>
+                    </div>
 
-        <tr>
-            <td><b>End Time</b></td>
-            <td><input type="time" [(ngModel)]="model.endTime" /></td>
+                </tr>
 
-        </tr>
+                <tr>
+                    <td><b>No of Seats</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input type="text" class="form-control" [(ngModel)]="model.noOfSeats" required /></td>
+                    </div>
+                    </div>
 
-        <tr>
-            <td><b>No of Seats</b></td>
-            <td><input type="text" [(ngModel)]="model.noOfSeats" required /></td>
+                </tr>
 
-        </tr>
+                <tr>
+                    <td><b>Cost Per Seat</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input type="text" class="form-control" [(ngModel)]="model.costPerSeat" required /></td>
+                    </div>
+                    </div>
 
-        <tr>
-            <td><b>Cost Per Seat</b></td>
-            <td><input type="text" [(ngModel)]="model.costPerSeat" required /></td>
+                </tr>
 
-        </tr>
-
-        <tr>
-            <td>
-                <input type="button" class="btn btn-success" id="addbutton" [disabled]="validate()" type="button" value="Add Bus" (click)="addBus()" />
-            </td>
-        </tr>
-    </table>
-</div>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" class="btn btn-success" style="font-size: 20px; padding: 10px;"
+                            id="addbutton" [disabled]="validate()" type="button" value="Add Bus" (click)="addBus()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>

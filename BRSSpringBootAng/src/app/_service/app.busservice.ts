@@ -36,8 +36,21 @@ export class BusService{
 
     }
 
+    getSources(){
+        return this.myhttp.get('http://localhost:9085/brs/getsources');
+    }
+    getDestinations(){
+        return this.myhttp.get('http://localhost:9085/brs/getdestinations');
+    }
+
     deleteBus(id:number){ 
         return this.myhttp.put("http://localhost:9085/brs/deletebus?busId="+id,null);
+    }
+
+    showRunningBuses(src:string,dest:string,journeydate:any){
+        console.log(dest)
+        console.log("http://localhost:9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
+        return this.myhttp.get("http://localhost:9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
     }
 
 }

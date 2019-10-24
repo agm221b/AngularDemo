@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusService } from './_service/app.busservice';
 import { Bus } from './_model/app.bus';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,7 +21,7 @@ export class ShowBusesComponent implements OnInit {
     public confirmClicked:boolean=false;
     public cancelClicked:boolean=false;
 
-    constructor(private service: BusService, private router: Router) {
+    constructor(private service: BusService, private router: Router, private toastr: ToastrService) {
 
     }
 
@@ -33,7 +34,9 @@ export class ShowBusesComponent implements OnInit {
     deleteBus(id: any): any {
         console.log(id);
         this.service.deleteBus(id).subscribe();
+        this.toastr.success('Bus Deleted Successfully!', 'Congratulations!');
         location.reload();
+        
         
     }
 
