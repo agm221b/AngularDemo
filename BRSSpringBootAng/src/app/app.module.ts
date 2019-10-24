@@ -31,15 +31,19 @@ import { AddPassengerComponent } from './app.addpassengercomponent';
 
 import { AddUserComponent } from './app.addusercomponent';
 import { ViewAllUsersComponent } from './app.viewalluserscomponent';
+import { HomeComponent } from './app.homecomponent';
 
 
 //{path: 'show/:text', component: ShowComponent},
 const myroutes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: AppComponent },
+    
+    
+    { path: 'adminhome', component: AdminHomeComponent },
     { path: 'addbus', component: AddBusComponent },
     { path: 'showbuses', component: ShowBusesComponent },
     { path: '**', component: ErrorComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: AddUserComponent },
     { path: 'addbooking', component: AddBookingComponent },
     { path: 'viewbookings', component: ViewBookingsComponent },
     { path: 'cancelbooking/:bookingId', component: CancelBookingComponent },
@@ -65,6 +69,7 @@ const myroutes: Routes = [
     ],
     declarations: [
         AppComponent,
+        HomeComponent,
         AddBusComponent,
         ShowBusesComponent,
         AdminHomeComponent,
