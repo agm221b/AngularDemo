@@ -1,3 +1,8 @@
+/* author Aditya
+description : show buses component
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 import { Component,OnInit} from '@angular/core'
 import { BookingService } from './_service/app.bookingservice';
 import { BusTransaction } from './_model/app.bustransaction';

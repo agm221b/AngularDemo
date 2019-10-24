@@ -1,4 +1,9 @@
-﻿import { NgModule, Component } from '@angular/core';
+﻿/* author Tejaswini, Aditya, Mayank
+description : main app module
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';

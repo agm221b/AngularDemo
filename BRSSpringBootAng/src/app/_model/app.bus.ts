@@ -1,3 +1,7 @@
+/* author Aditya
+Created on: 19/10/2019
+Last modified on: 23/10/2019
+ */
 export class Bus{
     busId: number;
     busName: string;
