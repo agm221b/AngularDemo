@@ -1,8 +1,3 @@
-/* author Tejaswini
-description contains the service methods of booking
-Created on: 19/10/2019
-Last modified on: 23/10/2019
- */
 import { Injectable} from '@angular/core'
 import { HttpClient} from '@angular/common/http'
 import { Booking } from '../_model/app.booking';
@@ -22,7 +17,8 @@ export class BookingService{
     constructor(private bookingHttp:HttpClient,private busService:BusService){}
 
     viewAllBookings(){
-        return this.bookingHttp.get("http://localhost:9085/brs/viewallbookings");
+        let username=sessionStorage.getItem('username');
+        return this.bookingHttp.get("http://localhost:9085/brs/viewallbookings?username="+username);
     }
 
     addBooking(passengers:Passenger[],busTransactionId:number,modeOfPayment:string){
@@ -49,5 +45,8 @@ export class BookingService{
         return this.bookingHttp.get("http://localhost:9085/brs/downloadticketpdf?bookingId="+bookingId,{
             responseType:"blob"
         });
+    }
+    getUserDetails(username:string){
+        return this.bookingHttp.get("http://localhost:9085/brs/getuser?username="+username);
     }
 }

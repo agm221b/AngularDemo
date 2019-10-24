@@ -1,36 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router';
-import {AuthenticationService} from './_service/app.authenticationservice';
+import { AuthenticationService } from './_service/app.authenticationservice';
+import { BookingService } from './_service/app.bookingservice';
+import { User } from './_model/app.user';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './_html/app.login.html'
 })
 export class LoginComponent implements OnInit {
 
-  username = ''
-  password = ''
-  invalidLogin = false
+  username: string;
+  password: string;
+  invalidLogin = false;
 
-  constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
+  constructor(private router: Router, private loginService: AuthenticationService) { }
 
   ngOnInit() {
+
   }
 
   checkLogin() {
-    (this.loginservice.authenticate(this.username, this.password).subscribe(
-      data => {
-        this.router.navigate([''])
+    if (this.loginService.authenticate(this.username, this.password)
+    ) {
+      let usertype = sessionStorage.getItem('usertype');
+      if (usertype == 'A') {
+        this.router.navigate(['/adminhome'])
         this.invalidLogin = false
-      },
-      error => {
-        this.invalidLogin = true
-
       }
-    )
-    );
+      else{
+        this.router.navigate(['/customerhome'])
+      this.invalidLogin = false
+      }
 
+    } else
+      this.invalidLogin = true
   }
+
 
 }

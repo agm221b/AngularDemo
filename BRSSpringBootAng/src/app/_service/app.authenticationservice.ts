@@ -1,53 +1,32 @@
-/* author Tejaswini
-Created on: 19/10/2019
-Last modified on: 23/10/2019
- */
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-
-export class User{
-  constructor(
-    public status:string,
-     ) {}
-  
-}
-
-export class JwtResponse{
-  constructor(
-    public jwttoken:string,
-     ) {}
-  
-}
+import { Injectable, OnInit} from '@angular/core';
+import { BookingService } from './app.bookingservice';
+import { User } from '../_model/app.user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn:'root'
 })
-export class AuthenticationService {
+export class AuthenticationService implements OnInit{
+    user:User;
+    constructor(private bookingService:BookingService) { }
 
-  constructor(
-    private httpClient:HttpClient
-  ) { 
-     }
-
-     authenticate(username:string, password:string) {
-      return this.httpClient.post<any>('http://localhost:9085/authenticate',{username,password}).pipe(
-       map(
-         userData => {
-          sessionStorage.setItem('username',username);
-          let tokenStr= 'Bearer '+userData.token;
-          sessionStorage.setItem('token', tokenStr);
-          return userData;
-         }
-       )
-  
-      );
+    ngOnInit(){
+        
     }
-  
+
+  authenticate(username:string, password:string) {
+      this.bookingService.getUserDetails(username).subscribe((data:User)=>this.user=data);
+    if (username === this.user.username && password === this.user.pass) {
+      sessionStorage.setItem('username', username)
+      sessionStorage.setItem('usertype',this.user.userType);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
-    //console.log(!(user === null))
+    console.log(!(user === null))
     return !(user === null)
   }
 
