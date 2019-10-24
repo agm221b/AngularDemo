@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
 import { Booking } from './_model/app.booking';
 
 import { BookingService } from './_service/app.bookingservice';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -23,7 +24,7 @@ export class ViewBookingsComponent implements OnInit {
     public confirmClicked: boolean=false;
     public cancelClicked: boolean = false;
 
-    constructor(private bookingservice: BookingService) { }
+    constructor(private bookingservice: BookingService, private toastr:ToastrService) { }
     ngOnInit() {
         this.bookingservice.viewAllBookings().subscribe((data: Booking[]) => this.bookings = data);
     }
@@ -31,6 +32,7 @@ export class ViewBookingsComponent implements OnInit {
     cancelBooking(bookingId) {
         this.bookingservice.cancelBooking(bookingId).subscribe();
         location.reload();
+        alert("Booking Cancelled Successfully")
     }
 
     downloadTicket(bookingId:number){

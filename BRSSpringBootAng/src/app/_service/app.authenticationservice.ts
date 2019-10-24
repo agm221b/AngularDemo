@@ -14,6 +14,9 @@ export class AuthenticationService implements OnInit{
     }
 
   authenticate(username:string, password:string) {
+    if(username==='' && password===''){
+      return false;
+    }
       this.bookingService.getUserDetails(username).subscribe((data:User)=>this.user=data);
     if (username === this.user.username && password === this.user.pass) {
       sessionStorage.setItem('username', username)

@@ -18,15 +18,22 @@ export class AddBookingComponent implements OnInit{
     sources:string[];
     destinations:string[];
     runningBuses:BusTransaction[]=[];
-    src:string;
-    dest:string;
-    journeydate:any;
+    src:string='';
+    dest:string='';
+    journeydate:any='';
     loadComponent=false;
     dateFormat='dd-MM-yyyy';
 
+    minDate:any;
+    maxDate:any;
+
     errorFlag:boolean=false;
     
-    constructor(private busservice:BusService,private router:Router,private bookingService:BookingService,private route:ActivatedRoute,private datepipe:DatePipe){}
+    constructor(private busservice:BusService,private router:Router,private bookingService:BookingService,private route:ActivatedRoute,private datepipe:DatePipe){
+        this.minDate=new Date();
+        this.maxDate=new Date();
+        this.maxDate.setMonth(this.maxDate.getMonth()+1);
+    }
 
     ngOnInit(){
         this.busservice.getSources().subscribe((data:string[])=>this.sources=data);
@@ -34,6 +41,9 @@ export class AddBookingComponent implements OnInit{
     }
 
     searchRunningBuses(){
+        if(this.src==='' && this.dest===''&& this.journeydate===null){
+            alert('Please select source,destination and date of journey');
+        }
         this.journeydate=this.datepipe.transform(this.journeydate,this.dateFormat);
         this.router.navigate(['/searchrunningbuses',this.src,this.dest,this.journeydate]);
     }

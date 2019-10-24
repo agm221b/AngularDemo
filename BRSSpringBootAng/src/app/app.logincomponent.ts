@@ -10,10 +10,11 @@ import { User } from './_model/app.user';
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
+  username: string='';
+  password: string='';
   invalidLogin = false;
 
+  errorFlag:boolean=false;
   constructor(private router: Router, private loginService: AuthenticationService) { }
 
   ngOnInit() {
@@ -33,8 +34,25 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false
       }
 
-    } else
-      this.invalidLogin = true
+    }else if(this.username=='' && this.password==''){
+      alert('Username and Password should be entered')
+      this.invalidLogin=true;
+    }
+    else{
+      alert('Login credentials are incorrect.')
+      this.invalidLogin = true;
+    }
+
+    
+      
+  }
+
+  validateLogin(){
+      if(this.username==='' && this.password== ''){
+        this.errorFlag=true;
+      }else{
+        this.errorFlag=false;
+      }
   }
 
 

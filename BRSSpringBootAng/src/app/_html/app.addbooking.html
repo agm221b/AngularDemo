@@ -10,6 +10,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <style>
+                .main{
+                  background:white;
+                }
+                body{
+                  padding:200px;
+                  font-size: 20px;
+                  background-image: url(./assets/img/busbg2.jpg);
+                  background-size: cover;
+              }
+              h1{
+                text-align:center;
+              }
+              .container{
+                padding:10px;
+              }
+              .button-align{
+                text-align: center;
+              }
+              </style>
 </head>
 
 <body>
@@ -19,27 +39,27 @@
         <form>
             <div class="form-group">
                 <label for="source">Source</label>
-                <select class="form-control" name="sourceValue" [(ngModel)]="src" (blur)="bookingCheck()" required>
+                <select class="form-control form-control-lg" name="sourceValue" [(ngModel)]="src" (blur)="bookingCheck()" required>
                     <option disabled selected>--Select--</option>
                     <option *ngFor="let source of sources;" [value]="source">{{source}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="destination"> Destination</label>
-                <select class="form-control" name="destinationValue" [(ngModel)]="dest" (blur)="bookingCheck()" required>
+                <select class="form-control form-control-lg" name="destinationValue" [(ngModel)]="dest" (blur)="bookingCheck()" required>
                     <option disabled selected>--Select--</option>
                     <option *ngFor="let destination of destinations;" [value]="destination">{{destination}}</option>
                 </select>
             </div>
             <div class="row" *ngIf="errorFlag">
-                <small class="errorMessage">Source and Destination cannot be the same.</small>
+                <small class="errorMessage" style="color:red;">Source and Destination cannot be the same.</small>
             </div>
             <div class="form-group">
                 <label for="date_of_journey">Date Of Journey</label>
-                <input type="date" class="form-control" name="journeyDateValue" [(ngModel)]="journeydate">
+                <input type="date" class="form-control form-control-lg dateselect" min="{{minDate|date:'yyyy-MM-dd'}}" max="{{maxDate|date:'yyyy-MM-dd'}}" name="journeyDateValue" [(ngModel)]="journeydate">
             </div>
             <div class="button-align">
-                <input type="button" class="findBtn btn btn-success" value="Search Bus" (click)="searchRunningBuses()">
+                <input type="button" class="findBtn btn btn-success btn-lg" value="Search Bus" (click)="searchRunningBuses()">
             </div>
         </form>
     </div>
