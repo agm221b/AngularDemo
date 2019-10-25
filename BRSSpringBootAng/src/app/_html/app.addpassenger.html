@@ -1,34 +1,65 @@
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</head>
-
-<div class="container main">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+            <style>
+                    body{
+                      padding:200px;
+                      font-size: 20px;
+                      background-image: url(./assets/img/busbg2.jpg);
+                      background-size: cover;
+                  }
+                  h1{
+                    text-align:center;
+                  }
+                  .container{
+                    padding:10px;
+                  }
+                  .button-align{
+                    text-align: center;
+                  }
+                  </style>
+    </head>
+    
+    <nav class="nav nav-pills nav-fill navbar-dark bg-dark">
+            <a class="nav-item nav-link" href="/customerhome"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Customer
+                Home</a>
+            <a class="nav-item nav-link" href="/addbooking"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Book Ticket
+                </a>
+            <a class="nav-item nav-link" href="/viewbookings"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">View 
+                Tickets</a>
+            <a class="nav-item nav-link" href="/logout"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Logout</a>
+        </nav>
+<h1>Passenger Details</h1>
+<div class="container">
         <form>
             <div *ngFor="let passenger of passengers;let i=index;" class="row">
-                <input type="number" class="form-control col-md-1" placeholder="{{i+1}}" disabled>
-                <input type="text" class="form-control col-md-3" placeholder="Passenger Name" [(ngModel)]="passengers[i].passengerName" [ngModelOptions]="{standalone:true}">
-                <input type="number" class="form-control col-md-3" placeholder="Passenger Age" [(ngModel)]="passengers[i].passengerAge" [ngModelOptions]="{standalone:true}">
+                <input type="number" class="form-control form-control-lg" placeholder="{{i+1}}" disabled>
+                <input type="text" class="form-control  form-control-lg" placeholder="Passenger Name" [(ngModel)]="passengers[i].passengerName" [ngModelOptions]="{standalone:true}">
+                <input type="number" class="form-control form-control-lg" placeholder="Passenger Age" [(ngModel)]="passengers[i].passengerAge" [ngModelOptions]="{standalone:true}">
                 <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" [(ngModel)]="passengers[i].passengerGender" [ngModelOptions]="{standalone:true}" value="M">
-                        <label class="form-check-label" for="passenger_gender">Male</label>
+                        <input class="form-check-input col-auto" type="radio" [(ngModel)]="passengers[i].passengerGender" [ngModelOptions]="{standalone:true}" value="M">
+                        <label class="form-check-label " for="passenger_gender">Male</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" [(ngModel)]="passengers[i].passengerGender" [ngModelOptions]="{standalone:true}" value="F">
+                        <input class="form-check-input col-auto" type="radio" [(ngModel)]="passengers[i].passengerGender" [ngModelOptions]="{standalone:true}" value="F">
                         <label class="form-check-label" for="passenger_gender">Female</label>
                       </div>       
             </div>
-            <button class="btn btn-info col-md-3" (click)="addPassenger()">Add Passenger</button>
-            <button class="btn btn-danger col-md-3" (click)="removePassenger()">Remove Passenger</button>
+            <button class="btn btn-info col-auto btn-lg" (click)="addPassenger()">Add Passenger</button>
+            <button class="btn btn-danger col-auto btn-lg" (click)="removePassenger()">Remove Passenger</button>
         </form>
         <!-- <div class="col-sm-6 sub">
             <h4>Payment details</h4>
@@ -62,27 +93,31 @@
                 <button class="btn btn-primary">Proceed</button>
             </div>
         </div> -->
+        <br>
         <div class="row">
-            <h4>Payment Details</h4>
-            <br>
-            <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="UPI">
-                    <label class="form-check-label" for="payment_mode">UPI</label>
+                  <div class="col-auto">
+                        <h1>Payment Details</h1>
+                        <br>
+                        <div class="form-check form-check-inline">
+                                <input class="form-check-input col-auto" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="UPI">
+                                <label class="form-check-label" for="payment_mode">UPI</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input col-auto" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Debit Card">
+                                <label class="form-check-label" for="payment_mode">Debit Card</label>
+                              </div>
+                        <div class="form-check form-check-inline">
+                                <input class="form-check-input col-auto" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Credit Card">
+                                <label class="form-check-label" for="payment_mode">Credit Card</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input col-auto" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Net Banking">
+                                <label class="form-check-label" for="payment_mode">Net Banking</label>
+                              </div>  
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Debit Card">
-                    <label class="form-check-label" for="payment_mode">Debit Card</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Credit Card">
-                        <label class="form-check-label" for="payment_mode">Credit Card</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" [(ngModel)]="modeOfPayment" [ngModelOptions]="{standalone:true}" value="Net Banking">
-                        <label class="form-check-label" for="payment_mode">Net Banking</label>
-                      </div>            
+                            
         </div>
         <div class="button-align">
-                <button class="btn btn-info" (click)="addBooking()">Proceed To Booking</button>
+                <button class="btn btn-info btn-lg" (click)="addBooking()">Proceed To Booking</button>
             </div>
         </div>

@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit{
         this.service.addUser(this.model).subscribe((data)=>console.log(data));
 
         alert("User added");
-        this.router.navigate(['/showusers']);
+        this.router.navigate(['/home']);
     }
 
     validate() {

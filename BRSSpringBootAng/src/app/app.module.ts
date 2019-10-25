@@ -50,10 +50,8 @@ const myroutes: Routes = [
     { path: 'adminhome', component: AdminHomeComponent,canActivate:[AuthGuardService]},
     { path: 'addbus', component: AddBusComponent,canActivate:[AuthGuardService]},
     { path: 'showbuses', component: ShowBusesComponent,canActivate:[AuthGuardService]},
-    
-    
-    {path: 'login',component:LoginComponent},
-    {path: 'logout',component:LogoutComponent,canActivate:[AuthGuardService]},
+    {path:'login',component:LoginComponent},
+    {path:'logout',component:LogoutComponent,canActivate:[AuthGuardService]},
     { path: 'register', component: AddUserComponent },
     {path:'addbooking',component: AddBookingComponent,canActivate:[AuthGuardService]},
     {path:'viewbookings',component: ViewBookingsComponent,canActivate:[AuthGuardService]},
