@@ -1,39 +1,28 @@
-import { Injectable, OnInit} from '@angular/core';
-import { BookingService } from './app.bookingservice';
-import { User } from '../_model/app.user';
-
-@Injectable({
-    providedIn:'root'
-})
-export class AuthenticationService implements OnInit{
-    user:User;
-    constructor(private bookingService:BookingService) { }
-
-    ngOnInit(){
-        
-    }
-
-  authenticate(username:string, password:string) {
-    if(username==='' && password===''){
-      return false;
-    }
-      this.bookingService.getUserDetails(username).subscribe((data:User)=>this.user=data);
-    if (username === this.user.username && password === this.user.pass) {
-      sessionStorage.setItem('username', username)
-      sessionStorage.setItem('usertype',this.user.userType);
-      return true;
-    } else {
-      return false;
-    }
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthLoginInfo} from '../app.authlogininfo';
+import { JwtResponse} from '../_model/app.jwtresponse';
+import { SignUpInfo} from '../_model/app.signupinfo';
+ 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+ 
+export class AuthService {
+ 
+  private loginUrl = 'http://localhost:9085/auth/login';
+  private signupUrl = 'http://localhost:9085/auth/register';
+ 
+  constructor(private http: HttpClient) {
   }
-
-  isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
-    console.log(!(user === null))
-    return !(user === null)
+ 
+  // JwtResponse(accessToken,type,username,authorities)
+  attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
+    return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
-
-  logOut() {
-    sessionStorage.removeItem('username')
+ 
+  // SignUpInfo(name,username,email,role,password)
+  signUp(info: SignUpInfo): Observable<string> {
+    return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 }
