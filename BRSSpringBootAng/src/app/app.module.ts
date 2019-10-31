@@ -37,8 +37,8 @@ import { AddPassengerComponent } from './app.addpassengercomponent';
 import { AddUserComponent } from './app.addusercomponent';
 import { ViewAllUsersComponent } from './app.viewalluserscomponent';
 import { HomeComponent } from './app.homecomponent';
-import { LogoutComponent } from './app.logoutcomponent';
-import { AuthGuardService } from './_service/app.authguardservice';
+import { httpInterceptorProviders } from './app.authinterceptor';
+import { RegisterComponent } from './app.registercomponent';
 
 
 
@@ -47,19 +47,18 @@ const myroutes: Routes = [
     
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'adminhome', component: AdminHomeComponent,canActivate:[AuthGuardService]},
-    { path: 'addbus', component: AddBusComponent,canActivate:[AuthGuardService]},
-    { path: 'showbuses', component: ShowBusesComponent,canActivate:[AuthGuardService]},
+    { path: 'adminhome', component: AdminHomeComponent},
+    { path: 'addbus', component: AddBusComponent},
+    { path: 'showbuses', component: ShowBusesComponent},
     {path:'login',component:LoginComponent},
-    {path:'logout',component:LogoutComponent,canActivate:[AuthGuardService]},
-    { path: 'register', component: AddUserComponent },
-    {path:'addbooking',component: AddBookingComponent,canActivate:[AuthGuardService]},
-    {path:'viewbookings',component: ViewBookingsComponent,canActivate:[AuthGuardService]},
-    {path:'cancelbooking/:bookingId',component: CancelBookingComponent,canActivate:[AuthGuardService]},
-    {path:'customerhome',component: CustomerHomeComponent,canActivate:[AuthGuardService]},
-    {path:'searchrunningbuses/:src/:dest/:journeydate',component: ShowRunningBusesComponent,canActivate:[AuthGuardService]},
-    {path:'addpassenger/:busTransactionId',component:AddPassengerComponent,canActivate:[AuthGuardService]},
-    { path: 'adduser', component: AddUserComponent },
+    { path: 'register', component: RegisterComponent },
+    {path:'addbooking',component: AddBookingComponent},
+    {path:'viewbookings',component: ViewBookingsComponent},
+    {path:'cancelbooking/:bookingId',component: CancelBookingComponent},
+    {path:'customerhome',component: CustomerHomeComponent},
+    {path:'searchrunningbuses/:src/:dest/:journeydate',component: ShowRunningBusesComponent},
+    {path:'addpassenger/:busTransactionId',component:AddPassengerComponent},
+    { path: 'adduser', component: RegisterComponent },
     { path: 'showusers', component: ViewAllUsersComponent },
     { path: '**', component: ErrorComponent }
 ];
@@ -84,17 +83,12 @@ const myroutes: Routes = [
         ShowBusesComponent,
         AdminHomeComponent,
         LoginComponent,
-        LogoutComponent,
         ErrorComponent,
         AddBookingComponent, ViewBookingsComponent, CancelBookingComponent,
         CustomerHomeComponent, ShowRunningBusesComponent, AddPassengerComponent
-        , AddUserComponent, ViewAllUsersComponent
+        , RegisterComponent, ViewAllUsersComponent
     ],
-    providers: [{
-        provide: HTTP_INTERCEPTORS,
-        useClass: HttpErrorInterceptor,
-        multi: true
-    },DatePipe],
+    providers: [httpInterceptorProviders,DatePipe],
     entryComponents: [],
     bootstrap: [AppComponent]
 })

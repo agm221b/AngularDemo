@@ -1,59 +1,57 @@
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+
 import { AuthenticationService } from './_service/app.authenticationservice';
-import { BookingService } from './_service/app.bookingservice';
-import { User } from './_model/app.user';
+import { TokenStorageService } from './_service/app.tokenstorageservice';
+import { AuthLoginInfo } from './_model/app.authlogininfo';
 
 @Component({
   selector: 'login',
-  templateUrl: './_html/app.login.html'
+  templateUrl: './_html/app.login.html',
 })
 export class LoginComponent implements OnInit {
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  private loginInfo: AuthLoginInfo;
 
-  username: string='';
-  password: string='';
-  invalidLogin = false;
-
-  errorFlag:boolean=false;
-  constructor(private router: Router, private loginService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-
-  }
-
-  checkLogin() {
-    if (this.loginService.authenticate(this.username, this.password)
-    ) {
-      let usertype = sessionStorage.getItem('usertype');
-      if (usertype == 'A') {
-        this.router.navigate(['/adminhome'])
-        this.invalidLogin = false
-      }
-      else{
-        this.router.navigate(['/customerhome'])
-      this.invalidLogin = false
-      }
-
-    }else if(this.username=='' && this.password==''){
-      alert('Username and Password should be entered')
-      this.invalidLogin=true;
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getAuthorities();
     }
-    else{
-      alert('Login credentials are incorrect.')
-      this.invalidLogin = true;
-    }
-
-    
-      
   }
 
-  validateLogin(){
-      if(this.username==='' && this.password== ''){
-        this.errorFlag=true;
-      }else{
-        this.errorFlag=false;
+  onSubmit() {
+    console.log(this.form);
+
+    this.loginInfo = new AuthLoginInfo(
+      this.form.username,
+      this.form.password);
+
+    this.authService.attemptAuth(this.loginInfo).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUsername(data.username);
+        this.tokenStorage.saveAuthorities(data.authorities);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        this.reloadPage();
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
       }
+    );
   }
 
-
+  reloadPage() {
+    window.location.reload();
+  }
 }

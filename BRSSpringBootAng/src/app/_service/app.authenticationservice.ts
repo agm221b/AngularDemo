@@ -1,14 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthLoginInfo} from '../app.authlogininfo';
+import { AuthLoginInfo} from '../_model/app.authlogininfo';
 import { JwtResponse} from '../_model/app.jwtresponse';
 import { SignUpInfo} from '../_model/app.signupinfo';
+import { Injectable } from '@angular/core';
  
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
- 
-export class AuthService {
+
+@Injectable({
+  providedIn:'root'
+})
+export class AuthenticationService {
  
   private loginUrl = 'http://localhost:9085/auth/login';
   private signupUrl = 'http://localhost:9085/auth/register';
