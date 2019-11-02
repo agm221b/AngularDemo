@@ -47,7 +47,7 @@ h1{
                 <input type="password" class="form-control form-control-lg" name="password" [(ngModel)]="password" (blur)="validateLogin()"/>
             </div>
             <div class="row" *ngIf="errorFlag">
-              Username and Password to be entered
+              Username and Password to be entered above
             </div>
             <div class="button-align">
                 <input type="button" class="btn btn-success btn-lg" value="Login" (click)="checkLogin()">
