@@ -39,7 +39,8 @@ import { ViewAllUsersComponent } from './app.viewalluserscomponent';
 import { HomeComponent } from './app.homecomponent';
 import { httpInterceptorProviders } from './app.authinterceptor';
 import { RegisterComponent } from './app.registercomponent';
-
+import { HelpComponent} from './app.helpcomponent';
+import { ContactUsComponent} from './app.contactuscomponent';
 
 
 //{path: 'show/:text', component: ShowComponent},
@@ -60,6 +61,8 @@ const myroutes: Routes = [
     {path:'addpassenger/:busTransactionId',component:AddPassengerComponent},
     { path: 'adduser', component: RegisterComponent },
     { path: 'showusers', component: ViewAllUsersComponent },
+    { path: 'help', component: HelpComponent },
+    { path: 'contactus', component: ContactUsComponent },
     { path: '**', component: ErrorComponent }
 ];
 
@@ -84,6 +87,8 @@ const myroutes: Routes = [
         AdminHomeComponent,
         LoginComponent,
         ErrorComponent,
+        HelpComponent,
+        ContactUsComponent,
         AddBookingComponent, ViewBookingsComponent, CancelBookingComponent,
         CustomerHomeComponent, ShowRunningBusesComponent, AddPassengerComponent
         , RegisterComponent, ViewAllUsersComponent
