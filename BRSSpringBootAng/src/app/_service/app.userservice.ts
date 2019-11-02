@@ -14,7 +14,13 @@ export class UserService{
     temp:any;
     //Dependency Injection
     constructor(private userHttp:HttpClient){}
+    customerHome(){
+        return this.userHttp.get("http://localhost:9085/brs/customerhome");
+    }
 
+    adminHome(){
+        return this.userHttp.get("http://localhost:9085/brs/adminhome");
+    }
      viewAllUsers(){
         return this.userHttp.get("http://localhost:9085/brs/showusers");
     }

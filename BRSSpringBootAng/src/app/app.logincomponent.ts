@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  authority:string;
   private loginInfo: AuthLoginInfo;
 
   constructor(private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
@@ -22,6 +23,16 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
+      this.roles.every(role => {
+        if (role === 'ROLE_ADMIN') {
+          this.authority = 'admin';
+          return false;
+        } else if (role === 'ROLE_CUSTOMER') {
+          this.authority = 'customer';
+          return false;
+        }
+        return true;
+      });
     }
   }
 
@@ -41,7 +52,6 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.reloadPage();
       },
       error => {
         console.log(error);

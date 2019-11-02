@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
       this.form.username,
       this.form.email,
       this.form.password,
-      this.form.phoneNumber);
+      this.form.phoneNumber,
+      this.form.userType);
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {

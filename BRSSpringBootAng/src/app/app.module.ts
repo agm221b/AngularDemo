@@ -41,6 +41,7 @@ import { httpInterceptorProviders } from './app.authinterceptor';
 import { RegisterComponent } from './app.registercomponent';
 import { HelpComponent} from './app.helpcomponent';
 import { ContactUsComponent} from './app.contactuscomponent';
+import { LogoutComponent } from './app.logoutcomponent';
 
 
 //{path: 'show/:text', component: ShowComponent},
@@ -52,6 +53,7 @@ const myroutes: Routes = [
     { path: 'addbus', component: AddBusComponent},
     { path: 'showbuses', component: ShowBusesComponent},
     {path:'login',component:LoginComponent},
+    {path:'logout',component:LogoutComponent},
     { path: 'register', component: RegisterComponent },
     {path:'addbooking',component: AddBookingComponent},
     {path:'viewbookings',component: ViewBookingsComponent},
@@ -91,7 +93,7 @@ const myroutes: Routes = [
         ContactUsComponent,
         AddBookingComponent, ViewBookingsComponent, CancelBookingComponent,
         CustomerHomeComponent, ShowRunningBusesComponent, AddPassengerComponent
-        , RegisterComponent, ViewAllUsersComponent
+        , RegisterComponent, ViewAllUsersComponent,LogoutComponent
     ],
     providers: [httpInterceptorProviders,DatePipe],
     entryComponents: [],
