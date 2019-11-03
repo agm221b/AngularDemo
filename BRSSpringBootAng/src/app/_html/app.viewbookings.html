@@ -109,7 +109,7 @@
                         placement="left"
                         (confirm)="cancelBooking(booking.bookingId)"
                         (cancel)="cancelClicked = true">Cancel Ticket</button>
-                        <button class="waves-effect waves-light btn-small" (click)="downloadTicket(booking.bookingId)">Download eTicket</button>
+                        <button class="waves-effect waves-light btn-small" (click)="downloadTicketPdf(booking.bookingId)">Download eTicket</button>
                     </p>
                 </div>
                 <div class="card-reveal">
