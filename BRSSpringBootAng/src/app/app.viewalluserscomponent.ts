@@ -32,7 +32,7 @@ export class ViewAllUsersComponent implements OnInit{
     sortById(){
         this.users.sort(
             (val1, val2)=>
-            val1.userId-val2.userId
+            val2.userId-val1.userId
         );
     }
 

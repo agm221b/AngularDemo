@@ -43,7 +43,7 @@ export class ShowBusesComponent implements OnInit {
     sortById(){
         this.busList.sort(
             (val1, val2)=>
-            val1.busId-val2.busId
+            val2.busId-val1.busId
         );
     }
 

@@ -14,8 +14,8 @@ const httpOptions = {
 })
 export class AuthenticationService {
  
-  private loginUrl = 'http://localhost:9085/auth/login';
-  private signupUrl = 'http://localhost:9085/auth/register';
+  private loginUrl = 'http://'+ window.location.hostname+':9085/auth/login';
+  private signupUrl = 'http://'+ window.location.hostname+':9085/auth/register';
  
   constructor(private http: HttpClient) {
   }

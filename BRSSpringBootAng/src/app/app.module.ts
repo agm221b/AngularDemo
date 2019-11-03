@@ -42,6 +42,7 @@ import { RegisterComponent } from './app.registercomponent';
 import { HelpComponent} from './app.helpcomponent';
 import { ContactUsComponent} from './app.contactuscomponent';
 import { LogoutComponent } from './app.logoutcomponent';
+import { AboutUsComponent } from './app.aboutuscomponent';
 
 
 //{path: 'show/:text', component: ShowComponent},

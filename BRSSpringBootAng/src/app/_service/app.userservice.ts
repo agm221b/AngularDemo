@@ -15,14 +15,14 @@ export class UserService{
     //Dependency Injection
     constructor(private userHttp:HttpClient){}
     customerHome(){
-        return this.userHttp.get("http://localhost:9085/brs/customerhome");
+        return this.userHttp.get("http://"+ window.location.hostname+":9085/brs/customerhome");
     }
 
     adminHome(){
-        return this.userHttp.get("http://localhost:9085/brs/adminhome");
+        return this.userHttp.get("http://"+ window.location.hostname+":9085/brs/adminhome");
     }
      viewAllUsers(){
-        return this.userHttp.get("http://localhost:9085/brs/showusers");
+        return this.userHttp.get("http://"+ window.location.hostname+":9085/brs/showusers");
     }
 
     addUser(data:any) {
@@ -38,12 +38,12 @@ export class UserService{
         form.append("email", data.email);
         form.append("phoneNumber", data.phoneNumber);
         
-        return this.userHttp.post("http://localhost:9085/brs/adduser", form);
+        return this.userHttp.post("http://"+ window.location.hostname+"9085/brs/adduser", form);
     } 
 
    
      removeUser(id:number){
-        return this.userHttp.delete("http://localhost:9085/brs/removeuser?userId="+ id);
+        return this.userHttp.delete("http://"+ window.location.hostname+"9085/brs/removeuser?userId="+ id);
     } 
 
     

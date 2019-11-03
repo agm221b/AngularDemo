@@ -18,7 +18,7 @@ export class BusService{
     constructor(private myhttp:HttpClient){}
 
     getAllBuses(){
-        return this.myhttp.get('http://localhost:9085/brs/showbuses');
+        return this.myhttp.get('http://'+ window.location.hostname+'9085/brs/showbuses');
     }
     
     addBus(data:any){
@@ -37,25 +37,25 @@ export class BusService{
         form.append("costPerSeat", data.costPerSeat);
         form.append("noOfSeats", data.noOfSeats);
         console.log(form);
-        return this.myhttp.post('http://localhost:9085/brs/addbusdetails', form);
+        return this.myhttp.post('http://'+ window.location.hostname+':9085/brs/addbusdetails', form);
 
     }
 
     getSources(){
-        return this.myhttp.get('http://localhost:9085/brs/getsources');
+        return this.myhttp.get('http://'+ window.location.hostname+':9085/brs/getsources');
     }
     getDestinations(){
-        return this.myhttp.get('http://localhost:9085/brs/getdestinations');
+        return this.myhttp.get('http://'+ window.location.hostname+':9085/brs/getdestinations');
     }
 
     deleteBus(id:number){ 
-        return this.myhttp.put("http://localhost:9085/brs/deletebus?busId="+id,null);
+        return this.myhttp.put("http://"+ window.location.hostname+":9085/brs/deletebus?busId="+id,null);
     }
 
     showRunningBuses(src:string,dest:string,journeydate:any){
         console.log(dest)
-        console.log("http://localhost:9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
-        return this.myhttp.get("http://localhost:9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
+        console.log("http://"+ window.location.hostname+":9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
+        return this.myhttp.get("http://"+ window.location.hostname+":9085/brs/showrunningbuses?source="+src+"&destination="+dest+"&journeydate="+journeydate);
     }
 
 }

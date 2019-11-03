@@ -21,7 +21,7 @@ export class BookingService{
     
     viewAllBookings(){
         let username=sessionStorage.getItem('username');
-        return this.bookingHttp.get("http://localhost:9085/brs/viewallbookings?username="+username);
+        return this.bookingHttp.get('http://'+ window.location.hostname+':9085/brs/viewallbookings?username='+username);
     }
 
     addBooking(passengers:Passenger[],busTransactionId:number,modeOfPayment:string){
@@ -33,23 +33,23 @@ export class BookingService{
 
         }
         formdata.append("modeOfPayment",modeOfPayment);
-        return this.bookingHttp.post("http://localhost:9085/brs/createbooking?busTransactionId="+busTransactionId,formdata);
+        return this.bookingHttp.post("http://"+ window.location.hostname+":9085/brs/createbooking?busTransactionId="+busTransactionId,formdata);
     }
 
     getBookingById(bookingId:number){
-        return this.bookingHttp.get("http://localhost:9085/brs/viewbooking?bookingId="+bookingId)
+        return this.bookingHttp.get('http://'+ window.location.hostname+':9085/brs/viewbooking?bookingId='+bookingId)
     }
     cancelBooking(bookingId:number){
         console.log("Cancelled...");
-        return this.bookingHttp.put("http://localhost:9085/brs/cancelbooking?bookingId="+bookingId,null);
+        return this.bookingHttp.put('http://'+ window.location.hostname+':9085/brs/cancelbooking?bookingId='+bookingId,null);
     }
     downloadTicket(bookingId:number):Observable<Blob>{
         console.log("Downloading...");
-        return this.bookingHttp.get("http://localhost:9085/brs/downloadticketpdf?bookingId="+bookingId,{
+        return this.bookingHttp.get('http://'+ window.location.hostname+':9085/brs/downloadticketpdf?bookingId='+bookingId,{
             responseType:"blob"
         });
     }
     getUserDetails(username:string){
-        return this.bookingHttp.get("http://localhost:9085/brs/getuser?username="+username);
+        return this.bookingHttp.get('http://'+ window.location.hostname+':9085/brs/getuser?username='+username);
     }
 }
