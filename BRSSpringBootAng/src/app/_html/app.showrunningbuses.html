@@ -78,7 +78,12 @@
                 <td>{{runningbus.bus.source}}</td>
                 <td>{{runningbus.bus.destination}}</td>
                 <td>{{runningbus.availableSeats}}</td>
-                <td><button class="btn btn-success btn-lg" (click)="addPassengerDetails(runningbus.transactionId)">Book
+                <td><button class="btn btn-success btn-lg" mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="addPassengerDetails(runningbus.transactionId)"
+                    (cancel)="cancelClicked = true">Book
                         Ticket</button></td>
             </tr>
         </table>

@@ -22,6 +22,12 @@ export class ShowRunningBusesComponent implements OnInit{
     journeydate:any;
     runningBuses:BusTransaction[]=[];
     dateFormat='dd-MM-yyyy';
+
+    public popoverTitle: string = 'Book Ticket';
+    public popoverMessage: string = 'Do you want to book your ticket in this bus?';
+    public confirmClicked: boolean=false;
+    public cancelClicked: boolean = false;
+
     constructor(private busService:BusService,private router:Router,private route:ActivatedRoute,private datepipe:DatePipe){}
     ngOnInit(){
         this.src=this.route.snapshot.paramMap.get("src");

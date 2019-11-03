@@ -1,4 +1,4 @@
-import { Injectable} from '@angular/core'
+import { Injectable, OnInit} from '@angular/core'
 import { HttpClient} from '@angular/common/http'
 import { Booking } from '../_model/app.booking';
 import { BusService } from './app.busservice';
@@ -14,8 +14,11 @@ export class BookingService{
     destination:string;
     dateOfJourney:any;
     runningBuses:BusTransaction[];
-    constructor(private bookingHttp:HttpClient,private busService:BusService){}
+    constructor(private bookingHttp:HttpClient,private busService:BusService){
+        
+    }
 
+    
     viewAllBookings(){
         let username=sessionStorage.getItem('username');
         return this.bookingHttp.get("http://localhost:9085/brs/viewallbookings?username="+username);

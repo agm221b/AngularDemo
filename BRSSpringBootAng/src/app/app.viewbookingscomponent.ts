@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ViewBookingsComponent implements OnInit {
     confirmResult = null;
-    bookings: Booking[];
+    bookings: Booking[]=[];
 
     public popoverTitle: string = 'Cancel Ticket';
     public popoverMessage: string = 'Do you want to cancel your ticket?';
@@ -35,12 +35,10 @@ export class ViewBookingsComponent implements OnInit {
         alert("Booking Cancelled Successfully")
     }
 
-    downloadTicket(bookingId:number){
+    downloadTicketPdf(bookingId:number){
         this.bookingservice.downloadTicket(bookingId).subscribe(
             response => {
-                var blobObj=new Blob([response],{type:'application/pdf'});
-                var ticket='ticket.pdf';
-                //saveAs(blobObj,ticket);       
+                var blobObj=new Blob([response],{type:'application/pdf'});    
             },
             error => {
                 console.error(`Error: ${error.error}`)
