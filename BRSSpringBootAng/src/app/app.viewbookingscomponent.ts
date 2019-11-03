@@ -27,6 +27,7 @@ export class ViewBookingsComponent implements OnInit {
     constructor(private bookingservice: BookingService, private toastr:ToastrService) { }
     ngOnInit() {
         this.bookingservice.viewAllBookings().subscribe((data: Booking[]) => this.bookings = data);
+        this.bookings.sort((a,b)=>b.bookingId-a.bookingId);
     }
 
     cancelBooking(bookingId) {
