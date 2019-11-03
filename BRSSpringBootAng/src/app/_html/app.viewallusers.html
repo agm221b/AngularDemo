@@ -92,14 +92,17 @@
 <h1>
     List of users
 </h1>
-<table border="1" style="font-size: 25px;">
-    <tr>
-        <th>User Id</th>
+<table border="2px" class="table table-hover"
+style=" text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">
+<tr class="thead-dark" style="text-align: center;">
+    <th style="width: 70px; text-align: center;">
+      <a  (click)="sortById()"> Sort by User Id</a>
+    </th>
         <th>User Name</th>
         <th>User Type</th>
         <th>Email</th>
         <th>Phone Number</th>
-        <th>Actions</th>
+        
     </tr>
     <tr *ngFor="let user of users | paginate : {itemsPerPage:10, currentPage:p }">
         <td>{{user.userId}}</td>
@@ -107,12 +110,7 @@
         <td>{{user.userType}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phoneNumber}}</td>
-        <td>
-            <input type="button" id="addbtn" class="btn btn-default" mwlConfirmationPopover
-            [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage+''+user.username"
-            placement="center" (confirm)="removeUser(user.userId)" (cancel)="cancelClicked= true"
-            value="Delete">
-        </td>
+       
     </tr>
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </table>
