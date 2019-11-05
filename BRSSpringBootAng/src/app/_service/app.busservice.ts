@@ -18,7 +18,7 @@ export class BusService{
     constructor(private myhttp:HttpClient){}
 
     getAllBuses(){
-        return this.myhttp.get('http://'+ window.location.hostname+'9085/brs/showbuses');
+        return this.myhttp.get('http://'+ window.location.hostname+':9085/brs/showbuses');
     }
     
     addBus(data:any){
